@@ -1,0 +1,111 @@
+// Mixins
+
+// Breakpoint mixins
+@mixin media-breakpoint-up($name, $breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px
+)) {
+  $min: map-get($breakpoints, $name);
+  @if $min != 0 {
+    @media (min-width: $min) {
+      @content;
+    }
+  } @else {
+    @content;
+  }
+}
+
+@mixin media-breakpoint-down($name, $breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px
+)) {
+  $max: map-get($breakpoints, $name) - 0.02;
+  @if $max != -0.02 {
+    @media (max-width: $max) {
+      @content;
+    }
+  } @else {
+    @content;
+  }
+}
+
+// Flexbox mixins
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin flex-column-center {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+// Typography mixins
+@mixin text-truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+@mixin text-wrap {
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+}
+
+// Shadow mixins
+@mixin shadow-sm {
+  box-shadow: $box-shadow-sm;
+}
+
+@mixin shadow {
+  box-shadow: $box-shadow;
+}
+
+@mixin shadow-lg {
+  box-shadow: $box-shadow-lg;
+}
+
+// Border mixins
+@mixin border {
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+@mixin border-radius($radius: $border-radius) {
+  border-radius: $radius;
+}
+
+// Animation mixins
+@mixin fade-in($duration: 0.3s) {
+  opacity: 0;
+  animation: fadeIn $duration ease-in forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@mixin slide-in-up($duration: 0.3s) {
+  transform: translateY(20px);
+  animation: slideInUp $duration ease-out forwards;
+}
+
+@keyframes slideInUp {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}

@@ -1,0 +1,74 @@
+// Global styles
+@import './variables.scss';
+@import './mixins.scss';
+@import './utils.scss';
+
+// Reset and base styles
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: $font-family-base;
+  font-size: $font-size-base;
+  line-height: $line-height-base;
+  color: $text-color;
+  background-color: $body-bg;
+}
+
+// Container styles
+.container {
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+// Responsive container sizes
+@include media-breakpoint-up(sm) {
+  .container {
+    max-width: 540px;
+  }
+}
+
+@include media-breakpoint-up(md) {
+  .container {
+    max-width: 720px;
+  }
+}
+
+@include media-breakpoint-up(lg) {
+  .container {
+    max-width: 960px;
+  }
+}
+
+@include media-breakpoint-up(xl) {
+  .container {
+    max-width: 1140px;
+  }
+}
+
+// Utilities
+.d-flex {
+  display: flex;
+}
+
+.justify-content-center {
+  justify-content: center;
+}
+
+.align-items-center {
+  align-items: center;
+}
+
+.w-100 {
+  width: 100%;
+}
+
+.h-100 {
+  height: 100%;
+}
